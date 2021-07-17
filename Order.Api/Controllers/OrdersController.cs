@@ -52,7 +52,7 @@ namespace Order.Api.Controllers
             {
                 BuyerId = orderCreate.BuyerId,
                 OrderId = newOrder.Id,
-                PaymentMessage = new PaymentMessage()
+                Payment = new PaymentMessage()
                 {
                     CardName = orderCreate.Payment.CardName,
                     CardNumber = orderCreate.Payment.CardNumber,
@@ -64,7 +64,7 @@ namespace Order.Api.Controllers
 
             orderCreate.OrderItems.ForEach(item =>
             {
-                orderCreatedEvent.OrderItemMessages.Add(new OrderItemMessage()
+                orderCreatedEvent.OrderItem.Add(new OrderItemMessage()
                 {
                     Count = item.Count,
                     ProductId = item.ProductId
