@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "cFYdnr58cPgnZgZ1/VhHX1ZZfcak+jddaOEXjg2wP3hijc5R/z6XNeP/JqGDWgwmu5AZ5V4IdmTFpJx3sfe3DQ==",
+  "dgSpecHash": "1uRwTjeiLWVMbzCffwYIG5csIMxHHHHj/jckMPzgV9iWDA/Dq6c6bY11ypZG0IteYpVm+zXCeA+GGYM53XnxSQ==",
   "success": true,
   "projectFilePath": "D:\\MicroservicesWithDesignPatterns\\Stock.Api\\Stock.Api.csproj",
   "expectedPackageFiles": [

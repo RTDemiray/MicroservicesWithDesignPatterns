@@ -27,6 +27,7 @@ namespace Stock.Api
             services.AddMassTransit(options =>
             {
                 options.AddConsumer<OrderCreatedEventConsumer>();
+                options.AddConsumer<PaymentFailedEventConsumer>();
                     
                 options.UsingRabbitMq((context, cfg) =>
                 {
@@ -35,6 +36,10 @@ namespace Stock.Api
                     cfg.ReceiveEndpoint(RabbitMQSettings.StockOrderCreatedEventQueueName, e =>
                     {
                         e.ConfigureConsumer<OrderCreatedEventConsumer>(context);
+                    });
+                    cfg.ReceiveEndpoint(RabbitMQSettings.StockPaymentFailedEventQueueName, e =>
+                    {
+                        e.ConfigureConsumer<PaymentFailedEventConsumer>(context);
                     });
                 });
             });
