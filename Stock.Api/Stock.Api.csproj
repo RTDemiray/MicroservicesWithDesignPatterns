@@ -18,7 +18,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Consumers" />
       <Folder Include="Controllers" />
+      <Folder Include="obj\Debug\net5.0" />
     </ItemGroup>
 
 </Project>
