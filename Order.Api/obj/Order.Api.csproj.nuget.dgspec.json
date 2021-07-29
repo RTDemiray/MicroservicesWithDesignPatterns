@@ -132,6 +132,12 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "MassTransit": {
+              "target": "Package",
+              "version": "[7.2.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

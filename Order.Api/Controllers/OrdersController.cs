@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Order.Api.DTOs;
 using Order.Api.Models;
 using Shared;
+using Shared.Events;
+using Shared.Interfaces;
 
 namespace Order.Api.Controllers
 {
@@ -14,14 +16,12 @@ namespace Order.Api.Controllers
     public class OrdersController : ControllerBase
     {
         private readonly AppDbContext _appDbContext;
-        private readonly IPublishEndpoint _publishEndpoint;
         private readonly ISendEndpointProvider _sendEndpointProvider;
 
-        public OrdersController(AppDbContext appDbContext, IPublishEndpoint publishEndpoint,
+        public OrdersController(AppDbContext appDbContext,
             ISendEndpointProvider sendEndpointProvider)
         {
             _appDbContext = appDbContext;
-            _publishEndpoint = publishEndpoint;
             _sendEndpointProvider = sendEndpointProvider;
         }
 
@@ -48,7 +48,7 @@ namespace Order.Api.Controllers
             await _appDbContext.AddAsync(newOrder);
             await _appDbContext.SaveChangesAsync();
 
-            var orderCreatedEvent = new OrderCreatedEvent
+            var orderCreatedRequestEvent = new OrderCreatedRequestEvent
             {
                 BuyerId = orderCreate.BuyerId,
                 OrderId = newOrder.Id,
@@ -64,7 +64,7 @@ namespace Order.Api.Controllers
 
             orderCreate.OrderItems.ForEach(item =>
             {
-                orderCreatedEvent.OrderItem.Add(new OrderItemMessage()
+                orderCreatedRequestEvent.OrderItems.Add(new OrderItemMessage()
                 {
                     Count = item.Count,
                     ProductId = item.ProductId
@@ -75,8 +75,9 @@ namespace Order.Api.Controllers
             //@TODO: Publish: Exchange'e gider bir kuyruğa gitmediğinden dolayı kalıcı hale gelmez (havadadır). Publish edilen dataları almak için mutalaka Subscribe olmak lazım.
             //@TODO: Send: Direkt olarak kuyruğa gönderir. Sadece kuyruğa subscribe olan microserviceler dinleyebilir.
 
-            await _publishEndpoint.Publish(orderCreatedEvent);
-            // await _sendEndpointProvider.Send(orderCreatedEvent);
+            var sendEndpoint = await _sendEndpointProvider.GetSendEndpoint(new Uri($"queue:{RabbitMQSettings.OrderSaga}"));
+            await sendEndpoint.Send<IOrderCreatedRequestEvent>(orderCreatedRequestEvent);
+            
             return Ok();
         }
     }
