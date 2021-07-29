@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net5.0": {
-      "Automatonymous/5.1.2": {
+      "Automatonymous/5.1.1": {
         "type": "package",
         "dependencies": {
           "GreenPipes": "4.0.0"
@@ -39,10 +39,10 @@
           "lib/netstandard1.0/Humanizer.dll": {}
         }
       },
-      "MassTransit/7.2.2-develop.146": {
+      "MassTransit/7.2.1": {
         "type": "package",
         "dependencies": {
-          "Automatonymous": "5.1.2",
+          "Automatonymous": "5.1.1",
           "Microsoft.Extensions.Logging.Abstractions": "2.1.1",
           "NewId": "3.0.3",
           "Newtonsoft.Json": "11.0.2",
@@ -64,11 +64,11 @@
           "lib/netstandard2.0/MassTransit.dll": {}
         }
       },
-      "MassTransit.AspNetCore/7.2.2-develop.146": {
+      "MassTransit.AspNetCore/7.2.1": {
         "type": "package",
         "dependencies": {
-          "MassTransit": "7.2.2-develop.146",
-          "MassTransit.Extensions.DependencyInjection": "7.2.2-develop.146",
+          "MassTransit": "7.2.1",
+          "MassTransit.Extensions.DependencyInjection": "7.2.1",
           "Microsoft.Extensions.Diagnostics.HealthChecks": "3.1.11",
           "Microsoft.Extensions.Hosting.Abstractions": "3.1.11"
         },
@@ -79,10 +79,10 @@
           "lib/netstandard2.0/MassTransit.AspNetCoreIntegration.dll": {}
         }
       },
-      "MassTransit.Extensions.DependencyInjection/7.2.2-develop.146": {
+      "MassTransit.Extensions.DependencyInjection/7.2.1": {
         "type": "package",
         "dependencies": {
-          "MassTransit": "7.2.2-develop.146",
+          "MassTransit": "7.2.1",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "2.1.1"
         },
         "compile": {
@@ -92,11 +92,11 @@
           "lib/netstandard2.0/MassTransit.ExtensionsDependencyInjectionIntegration.dll": {}
         }
       },
-      "MassTransit.RabbitMQ/7.2.2-develop.146": {
+      "MassTransit.RabbitMQ/7.2.1": {
         "type": "package",
         "dependencies": {
-          "MassTransit": "7.2.2-develop.146",
-          "RabbitMQ.Client": "6.2.2"
+          "MassTransit": "7.2.1",
+          "RabbitMQ.Client": "6.2.1"
         },
         "compile": {
           "lib/netstandard2.0/MassTransit.RabbitMqTransport.dll": {}
@@ -854,7 +854,7 @@
           "lib/netstandard1.3/Newtonsoft.Json.Bson.dll": {}
         }
       },
-      "RabbitMQ.Client/6.2.2": {
+      "RabbitMQ.Client/6.2.1": {
         "type": "package",
         "dependencies": {
           "System.Memory": "4.5.4",
@@ -2241,6 +2241,9 @@
       "Shared/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "MassTransit": "7.2.1"
+        },
         "compile": {
           "bin/placeholder/Shared.dll": {}
         },
@@ -2251,14 +2254,14 @@
     }
   },
   "libraries": {
-    "Automatonymous/5.1.2": {
-      "sha512": "o7uzhyTSs9rH8q5U6YhAvBaoXlzcv08WwmyNu/tDJbHh3SOr5iaUJSqV/jRWJcEC31rjLuTquriVo52lEbEJjg==",
+    "Automatonymous/5.1.1": {
+      "sha512": "Cyzi+JrQ0f2GF9ouy2DptdCPQVGrWSl0oFI//GokvKilgjaffuGd/jm0nZ+iKS1M7aPP2/I2E41216N+pEGAgw==",
       "type": "package",
-      "path": "automatonymous/5.1.2",
+      "path": "automatonymous/5.1.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "automatonymous.5.1.2.nupkg.sha512",
+        "automatonymous.5.1.1.nupkg.sha512",
         "automatonymous.nuspec",
         "lib/netstandard2.0/Automatonymous.dll",
         "lib/netstandard2.0/Automatonymous.xml"
@@ -2289,58 +2292,58 @@
         "lib/netstandard1.0/Humanizer.dll"
       ]
     },
-    "MassTransit/7.2.2-develop.146": {
-      "sha512": "G5jNBiqBr2ZyQZONgMhK8nmkNvxRnFapKtO7NKN3eR8pmtNlfB6S7FR/7eeH9uA+hqU5h2y2WTxxjQaW66MgSg==",
+    "MassTransit/7.2.1": {
+      "sha512": "M74GNBSVsm6U6gfnSwUw4kfwlagVO/UXW3gCfbVCD1Zgr4NmKmzYKWrNq+kTBlYO28VbTm1VA53gfFZELh9hgg==",
       "type": "package",
-      "path": "masstransit/7.2.2-develop.146",
+      "path": "masstransit/7.2.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/MassTransit.dll",
         "lib/netstandard2.0/MassTransit.xml",
-        "masstransit.7.2.2-develop.146.nupkg.sha512",
+        "masstransit.7.2.1.nupkg.sha512",
         "masstransit.nuspec",
         "mt-logo-small.png"
       ]
     },
-    "MassTransit.AspNetCore/7.2.2-develop.146": {
-      "sha512": "NPogPSVPPqAICJnrTewRLsEcGNEfjMX98mavOSsf+x51BzMZLyYO3FftlJ1u3xzn7X4hOYEqoSSmQa7xpFEGjA==",
+    "MassTransit.AspNetCore/7.2.1": {
+      "sha512": "UWrDwhvWpSE3yicv6ECn7Fdyw3QLYeK8dtn9XsaBN/3KbgX9aaH9q4b35BjAtadTsr3XWS2HpM/8WPlDy9xw7A==",
       "type": "package",
-      "path": "masstransit.aspnetcore/7.2.2-develop.146",
+      "path": "masstransit.aspnetcore/7.2.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/MassTransit.AspNetCoreIntegration.dll",
         "lib/netstandard2.0/MassTransit.AspNetCoreIntegration.xml",
-        "masstransit.aspnetcore.7.2.2-develop.146.nupkg.sha512",
+        "masstransit.aspnetcore.7.2.1.nupkg.sha512",
         "masstransit.aspnetcore.nuspec",
         "mt-logo-small.png"
       ]
     },
-    "MassTransit.Extensions.DependencyInjection/7.2.2-develop.146": {
-      "sha512": "cC5/r4nxw33eZaD40WwDykCOc7C73R60WgZcHNI2gU6O7QU9s65T5gbY2FkD2WCz0WvI/U/7T/JFrawSvOegqA==",
+    "MassTransit.Extensions.DependencyInjection/7.2.1": {
+      "sha512": "j6169BvLUi36NcwbYx0i2NFHR83MRK/mOXzdTlpf5BWH1R3Znq1ms02lrdSr0q1LoDwZ+QF+5/hpQ6vSruyJPw==",
       "type": "package",
-      "path": "masstransit.extensions.dependencyinjection/7.2.2-develop.146",
+      "path": "masstransit.extensions.dependencyinjection/7.2.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/MassTransit.ExtensionsDependencyInjectionIntegration.dll",
         "lib/netstandard2.0/MassTransit.ExtensionsDependencyInjectionIntegration.xml",
-        "masstransit.extensions.dependencyinjection.7.2.2-develop.146.nupkg.sha512",
+        "masstransit.extensions.dependencyinjection.7.2.1.nupkg.sha512",
         "masstransit.extensions.dependencyinjection.nuspec",
         "mt-logo-small.png"
       ]
     },
-    "MassTransit.RabbitMQ/7.2.2-develop.146": {
-      "sha512": "XKInBzp0HYhls52LwUJHoVq3YsC/HP2rX8pdeZuFJs8bhWvUt++uls5d3RLVKJIoLBp8cJFtH3ir6RL7OjAXIQ==",
+    "MassTransit.RabbitMQ/7.2.1": {
+      "sha512": "TK7+DCGqCxwOokuoWldcJH8HSUgrTQU7W6cYyl33e26DAfJ97A/F2WHm4iDl2q+DXYIwwJBwcYw/tZ1Hep3DRA==",
       "type": "package",
-      "path": "masstransit.rabbitmq/7.2.2-develop.146",
+      "path": "masstransit.rabbitmq/7.2.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/MassTransit.RabbitMqTransport.dll",
         "lib/netstandard2.0/MassTransit.RabbitMqTransport.xml",
-        "masstransit.rabbitmq.7.2.2-develop.146.nupkg.sha512",
+        "masstransit.rabbitmq.7.2.1.nupkg.sha512",
         "masstransit.rabbitmq.nuspec",
         "mt-logo-small.png"
       ]
@@ -3619,10 +3622,10 @@
         "newtonsoft.json.bson.nuspec"
       ]
     },
-    "RabbitMQ.Client/6.2.2": {
-      "sha512": "+tJSgE+rQXgLvOxWvOxdZ0+No1EMa86+puZuNlCb4cNryHw2PY2Xiw/y2dz/WWdeJQp74Y2UnNXPkuLiYpvn+A==",
+    "RabbitMQ.Client/6.2.1": {
+      "sha512": "kdcin0uz1b9xQPvlLOoa8Y2zQsfu7nRuTrcX02dCLVzwGVlsPp9AFgu1L3kRh4wSFEOGE03OVqpWKxaDlhuowQ==",
       "type": "package",
-      "path": "rabbitmq.client/6.2.2",
+      "path": "rabbitmq.client/6.2.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3634,7 +3637,7 @@
         "lib/netstandard2.0/RabbitMQ.Client.dll",
         "lib/netstandard2.0/RabbitMQ.Client.pdb",
         "lib/netstandard2.0/RabbitMQ.Client.xml",
-        "rabbitmq.client.6.2.2.nupkg.sha512",
+        "rabbitmq.client.6.2.1.nupkg.sha512",
         "rabbitmq.client.nuspec"
       ]
     },
@@ -7430,8 +7433,9 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "MassTransit.AspNetCore >= 7.2.2-develop.146",
-      "MassTransit.RabbitMQ >= 7.2.2-develop.146",
+      "MassTransit >= 7.2.1",
+      "MassTransit.AspNetCore >= 7.2.1",
+      "MassTransit.RabbitMQ >= 7.2.1",
       "Microsoft.EntityFrameworkCore >= 5.0.8",
       "Microsoft.EntityFrameworkCore.InMemory >= 5.0.8",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 5.0.2",
@@ -7482,13 +7486,17 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
+          "MassTransit": {
+            "target": "Package",
+            "version": "[7.2.1, )"
+          },
           "MassTransit.AspNetCore": {
             "target": "Package",
-            "version": "[7.2.2-develop.146, )"
+            "version": "[7.2.1, )"
           },
           "MassTransit.RabbitMQ": {
             "target": "Package",
-            "version": "[7.2.2-develop.146, )"
+            "version": "[7.2.1, )"
           },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",

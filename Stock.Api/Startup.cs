@@ -6,6 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Shared;
+using Stock.Api.Consumers;
 using Stock.Api.Models;
 
 namespace Stock.Api
@@ -24,9 +26,19 @@ namespace Stock.Api
         {
             services.AddMassTransit(options =>
             {
+                options.AddConsumer<OrderCreatedEventConsumer>();
+                options.AddConsumer<StockRollbackMessageConsumer>();
                 options.UsingRabbitMq((context, cfg) =>
                 {
                     cfg.Host(Configuration.GetConnectionString("RabbitMQ"));
+                    cfg.ReceiveEndpoint(RabbitMQSettings.StockOrderCreatedEventQueueName, e =>
+                    {
+                        e.ConfigureConsumer<OrderCreatedEventConsumer>(context);
+                    });
+                    cfg.ReceiveEndpoint(RabbitMQSettings.StockRollbackMessageQueueName, e =>
+                    {
+                        e.ConfigureConsumer<StockRollbackMessageConsumer>(context);
+                    });
                 });
             });
             services.AddMassTransitHostedService();

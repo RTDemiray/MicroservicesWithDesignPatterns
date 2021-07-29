@@ -39,6 +39,12 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "MassTransit": {
+              "target": "Package",
+              "version": "[7.2.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -98,13 +104,17 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "MassTransit": {
+              "target": "Package",
+              "version": "[7.2.1, )"
+            },
             "MassTransit.AspNetCore": {
               "target": "Package",
-              "version": "[7.2.2-develop.146, )"
+              "version": "[7.2.1, )"
             },
             "MassTransit.RabbitMQ": {
               "target": "Package",
-              "version": "[7.2.2-develop.146, )"
+              "version": "[7.2.1, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
