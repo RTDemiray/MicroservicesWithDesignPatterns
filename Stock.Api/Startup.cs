@@ -27,19 +27,17 @@ namespace Stock.Api
             services.AddMassTransit(options =>
             {
                 options.AddConsumer<OrderCreatedEventConsumer>();
-                options.AddConsumer<PaymentFailedEventConsumer>();
-                    
+                options.AddConsumer<StockRollbackMessageConsumer>();
                 options.UsingRabbitMq((context, cfg) =>
                 {
                     cfg.Host(Configuration.GetConnectionString("RabbitMQ"));
-                    
                     cfg.ReceiveEndpoint(RabbitMQSettings.StockOrderCreatedEventQueueName, e =>
                     {
                         e.ConfigureConsumer<OrderCreatedEventConsumer>(context);
                     });
-                    cfg.ReceiveEndpoint(RabbitMQSettings.StockPaymentFailedEventQueueName, e =>
+                    cfg.ReceiveEndpoint(RabbitMQSettings.StockRollbackMessageQueueName, e =>
                     {
-                        e.ConfigureConsumer<PaymentFailedEventConsumer>(context);
+                        e.ConfigureConsumer<StockRollbackMessageConsumer>(context);
                     });
                 });
             });

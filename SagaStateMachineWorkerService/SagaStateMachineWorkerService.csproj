@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <UserSecretsId>dotnet-SagaStateMachineWorkerService-B03F9DE4-A662-43B3-AB34-95AC2AD75231</UserSecretsId>
+        <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="MassTransit.AspNetCore" Version="7.2.1" />
+        <PackageReference Include="MassTransit.EntityFrameworkCore" Version="7.2.1" />
+        <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="7.2.1" />
+        <PackageReference Include="MassTransit.RabbitMQ" Version="7.2.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.8" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.8">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Shared\Shared.csproj" />
+    </ItemGroup>
+</Project>

@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payment.Api", "Payment.Api\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{82B37481-B357-422B-B874-CF7C2168D7A7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SagaStateMachineWorkerService", "SagaStateMachineWorkerService\SagaStateMachineWorkerService.csproj", "{8C0E7C07-E2EA-4B92-8CD3-953F32D6BEA4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{82B37481-B357-422B-B874-CF7C2168D7A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82B37481-B357-422B-B874-CF7C2168D7A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82B37481-B357-422B-B874-CF7C2168D7A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C0E7C07-E2EA-4B92-8CD3-953F32D6BEA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C0E7C07-E2EA-4B92-8CD3-953F32D6BEA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C0E7C07-E2EA-4B92-8CD3-953F32D6BEA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C0E7C07-E2EA-4B92-8CD3-953F32D6BEA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

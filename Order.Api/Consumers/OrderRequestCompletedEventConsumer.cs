@@ -2,29 +2,32 @@
 using MassTransit;
 using Microsoft.Extensions.Logging;
 using Order.Api.Models;
-using Shared;
+using Shared.Interfaces;
 
 namespace Order.Api.Consumers
 {
-    public class PaymentCompletedEventConsumer : IConsumer<PaymentCompletedEvent>
+    public class OrderRequestCompletedEventConsumer : IConsumer<IOrderRequestCompletedEvent>
     {
         private readonly AppDbContext _context;
-        private readonly ILogger<PaymentCompletedEventConsumer> _logger;
-        
-        public PaymentCompletedEventConsumer(AppDbContext context, ILogger<PaymentCompletedEventConsumer> logger)
+
+        private readonly ILogger<OrderRequestCompletedEventConsumer> _logger;
+
+        public OrderRequestCompletedEventConsumer(AppDbContext context, ILogger<OrderRequestCompletedEventConsumer> logger)
         {
             _context = context;
             _logger = logger;
         }
 
-        public async Task Consume(ConsumeContext<PaymentCompletedEvent> context)
+        public async Task Consume(ConsumeContext<IOrderRequestCompletedEvent> context)
         {
             var order = await _context.Orders.FindAsync(context.Message.OrderId);
+
             if (order != null)
             {
                 order.Status = OrderStatus.Complete;
                 await _context.SaveChangesAsync();
-                _logger.LogInformation($"Order (Id={context.Message.OrderId}) status changed: {order.Status}");
+
+                _logger.LogInformation($"Order (Id={context.Message.OrderId}) status changed : {order.Status}");
             }
             else
             {
