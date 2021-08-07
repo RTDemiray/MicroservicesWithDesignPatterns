@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "6ZB/SE3pGsQVx7P5CzAmiSxdDiB8jSsbafAmgAvZSI2IWk0d47TVQjAKV0TiW0BQNO9z08Eq6UmXm3iNyl1FWg==",
+  "dgSpecHash": "2PGZpy6vPAVdGoyaGGjwoid0RMh5CpsNnbAWsd0fFL96OMmIurPiKhLlAoYgTdBk9eJkQ1Tu0zpn/m/mKwUhUg==",
   "success": true,
   "projectFilePath": "D:\\MicroservicesWithDesignPatterns\\Order.Api\\Order.Api.csproj",
   "expectedPackageFiles": [
