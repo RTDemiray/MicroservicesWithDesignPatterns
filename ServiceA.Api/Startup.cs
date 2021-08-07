@@ -31,16 +31,50 @@ namespace ServiceA.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddHttpClient<ProductService>(opt =>
-            {
-                opt.BaseAddress = new Uri("https://localhost:5003/api/products/");
-            });
-            
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ServiceA.Api", Version = "v1" });
             });
+            
+            services.AddHttpClient<ProductService>(opt =>
+            {
+                opt.BaseAddress = new Uri("https://localhost:5003/api/products/");
+            }).AddPolicyHandler(GetAdvanceCircuitBreakerPolicy());
+        }
+        
+        private IAsyncPolicy<HttpResponseMessage> GetAdvanceCircuitBreakerPolicy()
+        {
+            //@TODO: 10 saniye içerisinde 100 tane istekden 10 tanesi başarısız ise çalışır.
+            return HttpPolicyExtensions.HandleTransientHttpError().AdvancedCircuitBreakerAsync(0.1, TimeSpan.FromSeconds(30), 30, TimeSpan.FromSeconds(30), onBreak: (arg1, arg2) =>
+            {
+                Debug.WriteLine("Circuit Breaker Status => On Break");
+            }, onReset: () =>
+            {
+                Debug.WriteLine("Circuit Breaker Status => On Reset");
+            }, onHalfOpen: () =>
+            {
+                Debug.WriteLine("Circuit Breaker Status => On Half Open");
+            });
+        }
+
+        private IAsyncPolicy<HttpResponseMessage> getCircuitBreakerPolicy()
+        {
+            //@TODO: Art arda 3 tane başarısız istek olduğunda 10 saniye bekle.
+            return HttpPolicyExtensions.HandleTransientHttpError().CircuitBreakerAsync(3, TimeSpan.FromSeconds(10),
+                onBreak:
+                (arg1,arg2) =>
+                {
+                    Debug.WriteLine("Circuit Breaker Status => On Break");
+                }
+                , onHalfOpen: () =>
+                {
+                    Debug.WriteLine("Circuit Breaker Status => On Half Open");
+                }, onReset:
+                () =>
+                {
+                    Debug.WriteLine("Circuit Breaker Status => On Reset");
+                });
         }
 
         private IAsyncPolicy<HttpResponseMessage> GetRetryPolicy()
